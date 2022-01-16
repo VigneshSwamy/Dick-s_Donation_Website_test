@@ -127,7 +127,7 @@
   border:2px solid rgba(189, 27, 27, 0);
   height:500px;
   width:100%;  
-  background-image: url("../../../images/dicks_mission.PNG");
+  /* background-image: url("../../../images/dicks_mission.PNG"); */
   background-size: cover;
   
 }

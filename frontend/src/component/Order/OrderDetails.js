@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect,useRef } from "react";
 import "./orderDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
@@ -7,14 +7,20 @@ import { Typography } from "@material-ui/core";
 import { getOrderDetails, clearErrors } from "../../actions/orderAction";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
+import ReactToPrint from "react-to-print";
+import PrintIcon from "@mui/icons-material/Print";
 
 const OrderDetails = ({ match }) => {
+ 
   const { order, error, loading } = useSelector((state) => state.orderDetails);
+  const { shippingInfo } = useSelector((state) => state.cart);
+  
 
   const dispatch = useDispatch();
   const alert = useAlert();
-
+  const componentRef = useRef();
   useEffect(() => {
+    console.log(order);
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
@@ -29,7 +35,7 @@ const OrderDetails = ({ match }) => {
       ) : (
         <Fragment>
           <MetaData title="Order Details" />
-          <div className="orderDetailsPage">
+          <div className="orderDetailsPage" ref={componentRef}>
             <div className="orderDetailsContainer">
               <Typography component="h1">
                 Order #{order && order._id}
@@ -37,9 +43,17 @@ const OrderDetails = ({ match }) => {
               <Typography>Shipping Info</Typography>
               <div className="orderDetailsContainerBox">
                 <div>
-                  <p>Name:</p>
+                  <p>Order Placed by:</p>
                   <span>{order.user && order.user.name}</span>
+                  <hr></hr>
+                <span>&nbsp;</span>
+                <p>Designation:</p>
+                <span>{shippingInfo.userLoggedInDesignation}</span>
                 </div>
+                <div>
+                <p>Deliver To Student Id:</p>
+                <span>{shippingInfo.receivingPersonName}</span>
+              </div>
                 <div>
                   <p>Phone:</p>
                   <span>
@@ -54,30 +68,7 @@ const OrderDetails = ({ match }) => {
                   </span>
                 </div>
               </div>
-              <Typography>Payment</Typography>
-              <div className="orderDetailsContainerBox">
-                <div>
-                  <p
-                    className={
-                      order.paymentInfo &&
-                      order.paymentInfo.status === "succeeded"
-                        ? "greenColor"
-                        : "redColor"
-                    }
-                  >
-                    {order.paymentInfo &&
-                    order.paymentInfo.status === "succeeded"
-                      ? "PAID"
-                      : "NOT PAID"}
-                  </p>
-                </div>
-
-                <div>
-                  <p>Amount:</p>
-                  <span>{order.totalPrice && order.totalPrice}</span>
-                </div>
-              </div>
-
+              
               <Typography>Order Status</Typography>
               <div className="orderDetailsContainerBox">
                 <div>
@@ -99,19 +90,38 @@ const OrderDetails = ({ match }) => {
               <div className="orderDetailsCartItemsContainer">
                 {order.orderItems &&
                   order.orderItems.map((item) => (
-                    <div key={item.product}>
+                    <div className="cartitemholder" key={item.product}>
+                    <div className="cartitemholderimage">
                       <img src={item.image} alt="Product" />
-                      <Link to={`/product/${item.product}`}>
-                        {item.name}
-                      </Link>{" "}
+                    </div>
+                    <div className="cartitemholdername">
+                     <span>{item.name}</span>
+                    </div>
+                    <div className="cartitemholdercat">
+                      <span>Subcategory({item.SubCategory})</span>
+                    </div>
+                    <div className="cartitemholdersize">
+                      <span>Size({item.ProductSize})</span>
+                    </div>
+                    <div className="cartitemholderquantity">
                       <span>
-                        {item.quantity} X ${item.price} ={" "}
-                        <b>${item.price * item.quantity}</b>
+                        Quantity({item.quantity})
                       </span>
                     </div>
+                  </div>
                   ))}
+                   
               </div>
             </div>
+            <div className="printComponent">
+            <ReactToPrint
+              trigger={() => <PrintIcon className="PrintIcon" />}
+              content={() => componentRef.current}
+            />{" "}
+            <p>
+              <span>Print</span>
+            </p>
+          </div>
           </div>
         </Fragment>
       )}

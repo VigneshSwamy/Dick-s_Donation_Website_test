@@ -58,15 +58,15 @@ const Cart = ({ history }) => {
                 <div className="cartContainer" key={item.product}>
                   <CartItemCard item={item} deleteCartItems={deleteCartItems} />
                   <div className="cartInput">
-                    <button
+                    {/* <button
                       onClick={() =>
                         decreaseQuantity(item.product, item.quantity)
                       }
                     >
                       -
-                    </button>
+                    </button> */}
                     <input type="number" value={item.quantity} readOnly />
-                    <button
+                    {/* <button
                       onClick={() =>
                         increaseQuantity(
                           item.product,
@@ -76,11 +76,12 @@ const Cart = ({ history }) => {
                       }
                     >
                       +
-                    </button>
+                    </button> */}
                   </div>
-                  <p className="cartSubtotal">{`$${
+                  {/* <p className="cartSubtotal">{`$${
                     item.price * item.quantity
-                  }`}</p>
+                  }`}</p> */}
+                   <p className="cartSubtotal">{`$0`}</p>
                 </div>
               ))}
 
@@ -88,10 +89,11 @@ const Cart = ({ history }) => {
               <div></div>
               <div className="cartGrossProfitBox">
                 <p>Gross Total</p>
-                <p>{`$${cartItems.reduce(
+                {/* <p>{`$${cartItems.reduce(
                   (acc, item) => acc + item.quantity * item.price,
                   0
-                )}`}</p>
+                )}`}</p> */}
+                 <p>{`$0`}</p>
               </div>
               <div></div>
               <div className="checkOutBtn">

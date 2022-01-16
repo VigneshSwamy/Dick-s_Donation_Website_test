@@ -1,7 +1,7 @@
 footer {
   margin-top: 10vmax;
   padding: 2vmax;
-  background-color: rgb(34, 33, 33);
+  background-color: #006554;
   color: white;
   display: flex;
   align-items: center;
@@ -49,6 +49,11 @@ footer {
   font-size: 4vmax;
   font-family: "Roboto";
   color: #eb4034;
+}
+.midFooter > img {
+  width: 10vmax;
+  margin: 1vmax;
+  cursor: pointer;
 }
 .midFooter > p {
   max-width: 60%;

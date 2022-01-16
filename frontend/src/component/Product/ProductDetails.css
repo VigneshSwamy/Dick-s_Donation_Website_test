@@ -113,6 +113,36 @@
   margin: 1vmax 0;
 }
 
+.detailsBlock-3 > p >button {
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: all 0.5s;
+  background-color: #065749;
+  font: 500 0.7vmax "Roboto";
+  border-radius: 20px;
+  padding: 0.5vmax 2vmax;
+  margin: 1vmax;
+  outline: none;
+}
+
+.detailsBlock-3 > p >button:hover {
+  background-color: rgb(214, 84, 61);
+}
+
+.detailsBlock-3 > p >button:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
 .detailsBlock-4 {
   color: rgba(0, 0, 0, 0.897);
   font: 500 1.2vmax sans-serif;

@@ -1,38 +1,52 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef } from "react";
 import CheckoutSteps from "../Cart/CheckoutSteps";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
 import "./ConfirmOrder.css";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
+import ReactToPrint from "react-to-print";
+import PrintIcon from "@mui/icons-material/Print";
+import { addItemsToCart } from "../../actions/cartAction";
+import store from "../../store.js";
 
 const ConfirmOrder = ({ history }) => {
-  const { shippingInfo, cartItems } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const { shippingInfo, cartItems } = useSelector((state) =>state.cart);
   const { user } = useSelector((state) => state.user);
 
-  const subtotal = cartItems.reduce(
-    (acc, item) => acc + item.quantity * item.price,
-    0
-  );
+  const componentRef = useRef();
 
-  const shippingCharges = subtotal > 1000 ? 0 : 200;
+  // const subtotal = cartItems.reduce(
+  //   (acc, item) => acc + item.quantity * item.price,
+  //   0
+  // );
+  const cartItemss = useSelector(() => store.getState().cart.cartItems)
 
-  const tax = subtotal * 0.18;
+  const subtotal = 0;
 
-  const totalPrice = subtotal + tax + shippingCharges;
+  const shippingCharges = 0;
+
+  const tax = subtotal * 0;
+
+  const totalPrice = 0;
 
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
 
+  
   const proceedToPayment = () => {
     const data = {
       subtotal,
       shippingCharges,
       tax,
       totalPrice,
+      cartItemss
     };
-
+    console.log("cartItems updated",cartItemss);
+    localStorage.setItem("cartItemss",cartItemss);
+    //const username = useSelector(() => getState().cart.cartItems)
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
-
+   
     history.push("/process/payment");
   };
 
@@ -40,14 +54,22 @@ const ConfirmOrder = ({ history }) => {
     <Fragment>
       <MetaData title="Confirm Order" />
       <CheckoutSteps activeStep={1} />
-      <div className="confirmOrderPage">
+      <div className="confirmOrderPage" ref={componentRef}>
         <div>
           <div className="confirmshippingArea">
             <Typography>Shipping Info</Typography>
             <div className="confirmshippingAreaBox">
               <div>
-                <p>Name:</p>
+                <p>User Placed Order:</p>
                 <span>{user.name}</span>
+                <hr></hr>
+                <span>&nbsp;</span>
+                <p>Designation:</p>
+                <span>{shippingInfo.userLoggedInDesignation}</span>
+              </div>
+              <div>
+                <p>Deliver To Student Id:</p>
+                <span>{shippingInfo.receivingPersonName}</span>
               </div>
               <div>
                 <p>Phone:</p>
@@ -64,20 +86,39 @@ const ConfirmOrder = ({ history }) => {
             <div className="confirmCartItemsContainer">
               {cartItems &&
                 cartItems.map((item) => (
-                  <div key={item.product}>
-                    <img src={item.image} alt="Product" />
-                    <Link to={`/product/${item.product}`}>
-                      {item.name}
-                    </Link>{" "}
-                    <span>
-                      {item.quantity} X ${item.price} ={" "}
-                      <b>${item.price * item.quantity}</b>
-                    </span>
+                  <div className="cartitemholder" key={item.product}>
+                    <div className="cartitemholderimage">
+                      <img src={item.image} alt="Product" />
+                    </div>
+                    <div className="cartitemholdername">
+                     <span>{item.name}</span>
+                    </div>
+                    <div className="cartitemholdercat">
+                      <span>Subcategory({item.SubCategory})</span>
+                    </div>
+                    <div className="cartitemholdersize">
+                      <span>Size({item.ProductSize})</span>
+                    </div>
+                    <div className="cartitemholderquantity">
+                      <span>
+                        Quantity({item.quantity})
+                      </span>
+                    </div>
                   </div>
                 ))}
             </div>
           </div>
+          <div className="printComponent">
+            <ReactToPrint
+              trigger={() => <PrintIcon className="PrintIcon" />}
+              content={() => componentRef.current}
+            />{" "}
+            <p>
+              <span>Print</span>
+            </p>
+          </div>
         </div>
+
         {/*  */}
         <div>
           <div className="orderSummary">
@@ -92,7 +133,7 @@ const ConfirmOrder = ({ history }) => {
                 <span>${shippingCharges}</span>
               </div>
               <div>
-                <p>GST:</p>
+                <p>Tax:</p>
                 <span>${tax}</span>
               </div>
             </div>
@@ -104,7 +145,7 @@ const ConfirmOrder = ({ history }) => {
               <span>${totalPrice}</span>
             </div>
 
-            <button onClick={proceedToPayment}>Proceed To Payment</button>
+            <button onClick={proceedToPayment}>Confirm Order</button>
           </div>
         </div>
       </div>

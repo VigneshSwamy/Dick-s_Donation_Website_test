@@ -27,6 +27,21 @@
   color: rgba(0, 0, 0, 0.623);
 }
 
+.printComponent{
+  display: flex;
+  justify-content: center;
+  margin-top:-20px;
+  font: 600 1.1vmax "Roboto";
+}
+.printComponent > p{
+  margin-left:20px;
+  margin-top: 2.5px;
+}
+.printComponent:hover{
+  color: #065749;
+  transform: scale(1.1);
+}
+
 @media screen and (max-width: 600px) {
   .updateOrderForm {
     padding: 5vmax;

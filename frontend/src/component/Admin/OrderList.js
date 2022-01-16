@@ -50,13 +50,26 @@ const OrderList = ({ history }) => {
   }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
-
+    { field: "id", headerName: "Order ID", minWidth: 60, flex: 0.1 },
+    {
+      field: "orderfrom",
+      headerName: "Ordered By",
+      type: "string",
+      minWidth: 50,
+      flex: 0.1,      
+    },
+     {
+      field: "studentId",
+      headerName: "Student Id",
+      type: "string",
+      minWidth: 50,
+      flex: 0.1,
+    },
     {
       field: "status",
       headerName: "Status",
-      minWidth: 150,
-      flex: 0.5,
+      minWidth: 50,
+      flex: 0.1,
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Delivered"
           ? "greenColor"
@@ -65,26 +78,15 @@ const OrderList = ({ history }) => {
     },
     {
       field: "itemsQty",
-      headerName: "Items Qty",
-      type: "number",
-      minWidth: 150,
-      flex: 0.4,
+      headerName: "Qty",      
+      minWidth: 50,
+      flex: 0.1,
     },
-
-    {
-      field: "amount",
-      headerName: "Amount",
-      type: "number",
-      minWidth: 270,
-      flex: 0.5,
-    },
-
     {
       field: "actions",
-      flex: 0.3,
       headerName: "Actions",
-      minWidth: 150,
-      type: "number",
+      minWidth: 60,  
+      flex: 0.1,
       sortable: false,
       renderCell: (params) => {
         return (
@@ -110,11 +112,14 @@ const OrderList = ({ history }) => {
 
   orders &&
     orders.forEach((item) => {
+      //console.log(item);
       rows.push({
         id: item._id,
         itemsQty: item.orderItems.length,
         amount: item.totalPrice,
         status: item.orderStatus,
+        studentId: item.shippingInfo.receivingPersonName,
+        orderfrom: item.shippingInfo.userLoggedInDesignation       
       });
     });
 
@@ -125,7 +130,7 @@ const OrderList = ({ history }) => {
       <div className="dashboard">
         <SideBar />
         <div className="productListContainer">
-          <h1 id="productListHeading">ALL ORDERS</h1>
+          <h1 id="productListHeading">ALL ORDERS RECEIVED</h1>
 
           <DataGrid
             rows={rows}

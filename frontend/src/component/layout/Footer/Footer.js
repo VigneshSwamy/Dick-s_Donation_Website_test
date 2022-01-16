@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../../images/dicks_logo.svg";
+import lockerroomlogo from "../../../images/lockerroomlogo.PNG";
 import "./Footer.css";
 
 const Footer = () => {
@@ -13,9 +14,9 @@ const Footer = () => {
       </div>
 
       <div className="midFooter">        
-        <img src={logo} alt="" />
-        <p>Every Season Starts at DICK'S Sporting Goods</p>
-        <p>&copy; 2021 DICK’S Sporting Goods </p>
+        <img src={lockerroomlogo} alt="" />
+        <p><span>Presents From Us Not Only On Christmas </span><br /><span>But Everyday !!!</span></p>
+        <p>&copy; 2022 Locker Room 345 </p>
       </div>
 
       <div className="rightFooter">

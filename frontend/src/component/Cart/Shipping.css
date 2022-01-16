@@ -9,7 +9,7 @@
 
 .shippingBox {
   background-color: white;
-  width: 25vw;
+  /* width: 25vw; */
   height: 90vh;
   box-sizing: border-box;
   overflow: hidden;

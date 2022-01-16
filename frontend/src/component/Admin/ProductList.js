@@ -32,6 +32,8 @@ const ProductList = ({ history }) => {
   };
 
   useEffect(() => {
+
+    
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
@@ -49,39 +51,47 @@ const ProductList = ({ history }) => {
     }
 
     dispatch(getAdminProduct());
+    
   }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
   const columns = [
-    { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
+    { field: "id", headerName: "Product ID", Width:100, flex: 0.2 },
 
     {
       field: "name",
       headerName: "Name",
-      minWidth: 350,
-      flex: 1,
+      minWidth: 50,
+      flex: 0.1,
+    },
+    {
+      field: "category",
+      headerName: "Category",
+      minWidth: 70,
+      flex: 0.15,
+    },
+    {
+      field: "subcategory",
+      headerName: "SubCategory",
+      minWidth: 70,
+      flex: 0.15,
+    },
+    {
+      field: "size",
+      headerName: "Size",
+      minWidth: 50,
+      flex: 0.1,
     },
     {
       field: "stock",
-      headerName: "Stock",
-      type: "number",
-      minWidth: 150,
-      flex: 0.3,
+      headerName: "Stock",     
+      minWidth: 50,
+      flex: 0.1,
     },
-
     {
-      field: "price",
-      headerName: "Price",
-      type: "number",
-      minWidth: 270,
-      flex: 0.5,
-    },
-
-    {
-      field: "actions",
-      flex: 0.3,
+      field: "actions",     
       headerName: "Actions",
-      minWidth: 150,
-      type: "number",
+      minWidth: 50,
+      flex: 0.1,         
       sortable: false,
       renderCell: (params) => {
         return (
@@ -112,17 +122,20 @@ const ProductList = ({ history }) => {
         stock: item.Stock,
         price: item.price,
         name: item.name,
+        size:item.Size,
+        category:item.category,
+        subcategory:item.SubCategory
       });
     });
 
   return (
     <Fragment>
-      <MetaData title={`ALL PRODUCTS - Admin`} />
+      <MetaData title={`ALL Items Available - Admin`} />
 
       <div className="dashboard">
         <SideBar />
         <div className="productListContainer">
-          <h1 id="productListHeading">ALL PRODUCTS</h1>
+          <h1 id="productListHeading">ALL ITEMS </h1>
 
           <DataGrid
             rows={rows}

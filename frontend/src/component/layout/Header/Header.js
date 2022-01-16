@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactNavbar } from "overlay-navbar";
-import logo from "../../../images/dicks_logo.svg";
+// import logo from "../../../images/dicks_logo.svg";
+import logo from "../../../images/lockerroomlogo.PNG";
 
 
 

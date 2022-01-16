@@ -28,8 +28,6 @@ const Requestform = ({ history, location }) => {
   );
 
   const loginTab = useRef(null);
-  const registerTab = useRef(null);
-  const switcherTab = useRef(null);
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -79,7 +77,7 @@ const Requestform = ({ history, location }) => {
     }
   };
 
-  const redirect = location.search ? location.search.split("=")[1] : "/account";
+  // const redirect = location.search ? location.search.split("=")[1] : "/account";
 
   useEffect(() => {
     if (error) {
@@ -88,20 +86,11 @@ const Requestform = ({ history, location }) => {
     }
 
     if (isAuthenticated) {
-      history.push(redirect);
+      history.push("/requestform");
     }
-  }, [dispatch, error, alert, history, isAuthenticated, redirect]);
+  }, [dispatch, error, alert, history, isAuthenticated]);
 
-  const switchTabs = (e, tab) => {
-    if (tab === "login") {
-      switcherTab.current.classList.add("shiftToNeutral");
-      switcherTab.current.classList.remove("shiftToRight");
-
-      registerTab.current.classList.remove("shiftToNeutralForm");
-      loginTab.current.classList.remove("shiftToLeft");
-    }
-  };
-
+  
   const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]);
 
   // handle input change

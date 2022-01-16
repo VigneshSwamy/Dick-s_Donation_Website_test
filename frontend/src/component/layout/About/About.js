@@ -16,7 +16,7 @@ const About = () => {
           {/* <image src={dicksmission} alt="" /> */}
         </div>
         <div>
-          <image src={dicksmission} alt="" />
+          {/* <image src={dicksmission} alt="" /> */}
         </div>
       </div>
     </div>

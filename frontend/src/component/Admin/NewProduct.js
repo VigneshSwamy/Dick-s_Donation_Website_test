@@ -12,6 +12,8 @@ import SpellcheckIcon from "@material-ui/icons/Spellcheck";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import SideBar from "./Sidebar";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import HeightIcon from '@mui/icons-material/Height';
 
 const NewProduct = ({ history }) => {
   const dispatch = useDispatch();
@@ -20,22 +22,15 @@ const NewProduct = ({ history }) => {
   const { loading, error, success } = useSelector((state) => state.newProduct);
 
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState("");
+  // const [price, setPrice] = useState(0);
   const [category, setCategory] = useState("");
+  const [SubCategory, setSubCategory] = useState("");
+  const [Size, setSize] = useState(0);
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
-  const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
-  ];
+  const categories = ["FootWears", "Clothing", "Sports"];
 
   useEffect(() => {
     if (error) {
@@ -54,11 +49,10 @@ const NewProduct = ({ history }) => {
     e.preventDefault();
 
     const myForm = new FormData();
-
-    myForm.set("name", name);
-    myForm.set("price", price);
-    myForm.set("description", description);
+    myForm.set("name", name);        
     myForm.set("category", category);
+    myForm.set("SubCategory", SubCategory);
+    myForm.set("Size", Size);
     myForm.set("Stock", Stock);
 
     images.forEach((image) => {
@@ -98,8 +92,7 @@ const NewProduct = ({ history }) => {
             encType="multipart/form-data"
             onSubmit={createProductSubmitHandler}
           >
-            <h1>Create Product</h1>
-
+            <h1>Create New Item</h1>
             <div>
               <SpellcheckIcon />
               <input
@@ -111,28 +104,6 @@ const NewProduct = ({ history }) => {
               />
             </div>
             <div>
-              <AttachMoneyIcon />
-              <input
-                type="number"
-                placeholder="Price"
-                required
-                onChange={(e) => setPrice(e.target.value)}
-              />
-            </div>
-
-            <div>
-              <DescriptionIcon />
-
-              <textarea
-                placeholder="Product Description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                cols="30"
-                rows="1"
-              ></textarea>
-            </div>
-
-            <div>
               <AccountTreeIcon />
               <select onChange={(e) => setCategory(e.target.value)}>
                 <option value="">Choose Category</option>
@@ -143,7 +114,25 @@ const NewProduct = ({ history }) => {
                 ))}
               </select>
             </div>
-
+            <div>
+              <FilterAltIcon />
+              <input
+                type="text"
+                placeholder="SubCategory"
+                required
+                onChange={(e) => setSubCategory(e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <HeightIcon />
+              <input
+                type="text"
+                placeholder="Size"
+                required
+                onChange={(e) => setSize(e.target.value)}
+              />
+            </div>
             <div>
               <StorageIcon />
               <input
@@ -153,7 +142,6 @@ const NewProduct = ({ history }) => {
                 onChange={(e) => setStock(e.target.value)}
               />
             </div>
-
             <div id="createProductFormFile">
               <input
                 type="file"

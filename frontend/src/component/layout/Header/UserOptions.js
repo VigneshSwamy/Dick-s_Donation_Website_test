@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { logout } from "../../../actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 const UserOptions = ({ user }) => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -56,9 +57,11 @@ const UserOptions = ({ user }) => {
   function cart() {
     history.push("/cart");
   }
-  function logoutUser() {
-    dispatch(logout());
-    alert.success("Logout Successfully");
+  async function logoutUser() {
+    dispatch(logout());       
+    alert.success("Logout Successfully");   
+    await new Promise(resolve => setTimeout(resolve, 1000)); 
+    history.push("/");       
   }
 
   return (

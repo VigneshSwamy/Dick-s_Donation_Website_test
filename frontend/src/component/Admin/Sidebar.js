@@ -11,13 +11,13 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PeopleIcon from "@material-ui/icons/People";
 import RateReviewIcon from "@material-ui/icons/RateReview";
-import dickslogo from "../../images/dicks_logo.svg";
+import lockerroomlogo from "../../images/lockerroomlogo.PNG";
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
       <Link to="/">
-        <img src={dickslogo} alt="" />
+        <img src={lockerroomlogo} alt="" />
       </Link>
       <Link to="/admin/dashboard">
         <p>
@@ -29,7 +29,7 @@ const Sidebar = () => {
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ImportExportIcon />}
         >
-          <TreeItem nodeId="1" label="Products">
+          <TreeItem nodeId="1" label="Items">
             <Link to="/admin/products">
               <TreeItem nodeId="2" label="All" icon={<PostAddIcon />} />
             </Link>
@@ -51,12 +51,12 @@ const Sidebar = () => {
           <PeopleIcon /> Users
         </p>
       </Link>
-      <Link to="/admin/reviews">
+      {/* <Link to="/admin/reviews">
         <p>
           <RateReviewIcon />
           Reviews
         </p>
-      </Link>
+      </Link> */}
     </div>
   );
 };

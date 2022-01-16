@@ -11,13 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/MetaData";
 
 const categories = [
-  "Laptop",
-  "Footwear",
-  "Bottom",
-  "Tops",
-  "Attire",
-  "Camera",
-  "SmartPhones",
+  "FootWears",
+  "Clothing",
+  "Sports"
 ];
 
 const Products = ({ match }) => {
@@ -57,8 +53,8 @@ const Products = ({ match }) => {
       dispatch(clearErrors());
     }
 
-    dispatch(getProduct(keyword, currentPage, price, category, ratings));
-  }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
+    dispatch(getProduct(keyword, currentPage, category));
+  }, [dispatch, keyword, currentPage, category, alert, error]);
 
   return (
     <Fragment>
@@ -66,8 +62,57 @@ const Products = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title="PRODUCTS -- ECOMMERCE" />
+          <MetaData title="PRODUCTS" />
           <h2 className="productsHeading">Products</h2>
+
+          <div className="filterBox">
+            <div className="filSize">
+            <fieldset>
+              <Typography component="legend">Size</Typography>
+              <Slider
+                value={price}
+                onChange={priceHandler}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                min={4}
+                max={12}
+              />
+              </fieldset>
+            </div>
+
+            <div className="filCategories">
+              <fieldset>
+                <Typography component="legend">Categories</Typography>
+                <ul className="categoryBox">
+                  {categories.map((category) => (
+                    <li
+                      className="category-link"
+                      key={category}
+                      onClick={() => setCategory(category)}
+                    >
+                      {category}
+                    </li>
+                  ))}
+                </ul>
+              </fieldset>
+            </div>
+
+            {/* <div className="filRatings">
+              <fieldset>
+                <Typography component="legend">Ratings Above</Typography>
+                <Slider
+                  value={ratings}
+                  onChange={(e, newRating) => {
+                    setRatings(newRating);
+                  }}
+                  aria-labelledby="continuous-slider"
+                  valueLabelDisplay="auto"
+                  min={0}
+                  max={5}
+                />
+              </fieldset>
+            </div> */}
+          </div>
 
           <div className="products">
             {products &&
@@ -76,44 +121,6 @@ const Products = ({ match }) => {
               ))}
           </div>
 
-          <div className="filterBox">
-            <Typography>Price</Typography>
-            <Slider
-              value={price}
-              onChange={priceHandler}
-              valueLabelDisplay="auto"
-              aria-labelledby="range-slider"
-              min={0}
-              max={25000}
-            />
-
-            <Typography>Categories</Typography>
-            <ul className="categoryBox">
-              {categories.map((category) => (
-                <li
-                  className="category-link"
-                  key={category}
-                  onClick={() => setCategory(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-
-            <fieldset>
-              <Typography component="legend">Ratings Above</Typography>
-              <Slider
-                value={ratings}
-                onChange={(e, newRating) => {
-                  setRatings(newRating);
-                }}
-                aria-labelledby="continuous-slider"
-                valueLabelDisplay="auto"
-                min={0}
-                max={5}
-              />
-            </fieldset>
-          </div>
           {resultPerPage < count && (
             <div className="paginationBox">
               <Pagination

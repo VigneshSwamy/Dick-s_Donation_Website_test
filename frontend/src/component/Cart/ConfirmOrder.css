@@ -8,11 +8,26 @@
 .confirmOrderPage > div:last-child {
   border-left: 1px solid rgba(0, 0, 0, 0.247);
 }
+.printComponent{
+  display: flex;
+  justify-content: center;
+  margin-top:-20px;
+  font: 600 1.1vmax "Roboto";
+}
+.printComponent > p{
+  margin-left:20px;
+  margin-top: 2.5px;
+}
+.printComponent:hover{
+  color: #065749;
+  transform: scale(1.1);
+}
 
 .confirmshippingArea {
   padding: 5vmax;
   padding-bottom: 0%;
 }
+
 
 .confirmshippingArea > p {
   font: 400 1.8vmax "Roboto";
@@ -21,6 +36,21 @@
 .confirmshippingAreaBox,
 .confirmCartItemsContainer {
   margin: 2vmax;
+}
+.cartitemholder{
+
+  display:flex;
+  flex-basis: 50%;
+}
+
+.cartitemholderimage,
+.cartitemholdername,
+.cartitemholdercat,
+.cartitemholdersize,
+.cartitemholderquantity
+{
+  display: flex;
+  flex-basis: 15%;
 }
 
 .confirmshippingAreaBox > div {
@@ -34,7 +64,7 @@
 }
 .confirmshippingAreaBox > div > span {
   margin: 0 1vmax;
-  font: 100 1vmax "Roboto";
+  font: 600 1vmax "Roboto";
   color: #575757;
 }
 
@@ -60,7 +90,7 @@
   margin: 2vmax 0;
 }
 
-.confirmCartItemsContainer > div > img {
+.confirmCartItemsContainer > div > div >img {
   width: 3vmax;
 }
 
@@ -123,6 +153,10 @@
 .orderSummary > button:hover {
   background-color: rgb(192, 71, 50);
 }
+.PrintIcon{
+  position: relative;  
+  transform: scale(2.0);
+}
 
 @media screen and (max-width: 600px) {
   .confirmOrderPage {
@@ -164,7 +198,7 @@
     margin: 4vw 0;
   }
 
-  .confirmCartItemsContainer > div > img {
+  .confirmCartItemsContainer >  div > img {
     width: 10vw;
   }
 
@@ -173,7 +207,7 @@
     width: 30%;
   }
 
-  .confirmCartItemsContainer > div > span {
+  .confirmCartItemsContainer > div > div> span {
     font: 100 4vw "Roboto";
   }
 

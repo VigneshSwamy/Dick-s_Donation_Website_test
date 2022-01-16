@@ -3,51 +3,73 @@ const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ApiFeatures = require("../utils/apifeatures");
 const cloudinary = require("cloudinary");
+const sharp = require("sharp");
 
 // Create Product -- Admin
-exports.createProduct = catchAsyncErrors(async (req, res, next) => {
-  let images = [];
+exports.createProduct = catchAsyncErrors(async (req, res, next) => {  
 
-  if (typeof req.body.images === "string") {
-    images.push(req.body.images);
-  } else {
-    images = req.body.images;
-  }
-
-  const imagesLinks = [];
-
-  for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
-      folder: "products",
-    });
-
+  if (req.body.images==undefined) {    
+    const _id= "products/"+Math.floor(100000 + Math.random() * 800000);
+    const _url = "https://dummyimage.com/600x400/808080/fff.jpg&text="+req.body.name;
+    const imagesLinks = [];
     imagesLinks.push({
-      public_id: result.public_id,
-      url: result.secure_url,
+      public_id: _id,
+      url: _url,
+    });
+    req.body.images = imagesLinks;
+    req.body.user = req.user.id;
+    //console.log(req.body);
+    const product = await Product.create(req.body);
+    //console.log(product);
+    res.status(201).json({
+      success: true,
+      product,
+    });
+  } else {
+    let images = [];
+    if (typeof req.body.images === "string") {
+      images.push(req.body.images);
+    } else {
+      images = req.body.images;
+    }
+    
+    const imagesLinks = [];
+
+    for (let i = 0; i < images.length; i++) {
+      const result = await cloudinary.v2.uploader.upload(images[i], {
+        folder: "products",
+      });
+
+      imagesLinks.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+      });
+    }
+
+    req.body.images = imagesLinks;
+    req.body.user = req.user.id;
+    const product = await Product.create(req.body);
+
+    res.status(201).json({
+      success: true,
+      product,
     });
   }
-
-  req.body.images = imagesLinks;
-  req.body.user = req.user.id;
-
-  const product = await Product.create(req.body);
-
-  res.status(201).json({
-    success: true,
-    product,
-  });
 });
 
 // Get All Product
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
-  const resultPerPage = 8;
+  const resultPerPage = 6;
   const productsCount = await Product.countDocuments();
-
+  //console.log(req.query);
   const apiFeature = new ApiFeatures(Product.find(), req.query)
     .search()
     .filter();
 
+    //console.log(apiFeature);
+
   let products = await apiFeature.query;
+  //console.log(products);
 
   let filteredProductsCount = products.length;
 
@@ -66,12 +88,14 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
 
 // Get All Product (Admin)
 exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
+  
   const products = await Product.find();
-
+  
   res.status(200).json({
     success: true,
     products,
   });
+  
 });
 
 // Get Product Details

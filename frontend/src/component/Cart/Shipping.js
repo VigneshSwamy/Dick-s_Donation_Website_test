@@ -12,12 +12,18 @@ import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStatio
 import { Country, State } from "country-state-city";
 import { useAlert } from "react-alert";
 import CheckoutSteps from "../Cart/CheckoutSteps";
+import PersonIcon from '@mui/icons-material/Person';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+
 
 const Shipping = ({ history }) => {
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
   const alert = useAlert();
   const { shippingInfo } = useSelector((state) => state.cart);
 
+  const [receivingPersonName, setreceivingPersonName] = useState(shippingInfo.receivingPersonName);
+  const [userLoggedInDesignation, setuserLoggedInDesignation] = useState(shippingInfo.userLoggedInDesignation);
   const [address, setAddress] = useState(shippingInfo.address);
   const [city, setCity] = useState(shippingInfo.city);
   const [state, setState] = useState(shippingInfo.state);
@@ -33,7 +39,7 @@ const Shipping = ({ history }) => {
       return;
     }
     dispatch(
-      saveShippingInfo({ address, city, state, country, pinCode, phoneNo })
+      saveShippingInfo({receivingPersonName, userLoggedInDesignation, address, city, state, country, pinCode, phoneNo })
     );
     history.push("/order/confirm");
   };
@@ -53,6 +59,30 @@ const Shipping = ({ history }) => {
             encType="multipart/form-data"
             onSubmit={shippingSubmit}
           >
+            <div>
+              <PersonIcon />
+              <input
+                type="text"
+                placeholder="User Logged In"                
+                value={user.name + " (User Placing Order)"}  disabled              
+              />
+              <input
+                type="text"
+                placeholder="Designation"                
+                value={userLoggedInDesignation} 
+                onChange={(e) => setuserLoggedInDesignation(e.target.value)}               
+              />
+            </div>
+            <div>
+              <LocalShippingIcon />
+              <input
+                type="text"
+                placeholder="Receiving Student Id"
+                required
+                value={receivingPersonName}
+                onChange={(e) => setreceivingPersonName(e.target.value)}
+              />
+            </div>
             <div>
               <HomeIcon />
               <input

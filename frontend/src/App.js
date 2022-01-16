@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import Header from "./component/layout/Header/Header.js";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import WebFont from "webfontloader";
 import React from "react";
 import Footer from "./component/layout/Footer/Footer";
@@ -44,7 +44,7 @@ import About from "./component/layout/About/About";
 import NotFound from "./component/layout/Not Found/NotFound";
 import Requestform from "./component/User/Requestform";
 import Donate from "./component/donate/Donate";
-
+import RequestFormReplica from "./component/Cart/RequestFormReplica";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -84,9 +84,18 @@ function App() {
       )}
 
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/requestform" component={Requestform}/>
-        <Route exact path="/donate" component={Donate}/>
+        <Route
+          exact
+          path="/"
+          render={() => {
+            return isAuthenticated ? <Redirect to="/home" /> : <Redirect to="/login" />
+          }}
+        />
+        RequestFormReplica
+        <Route exact path="/replica" component={RequestFormReplica} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/requestform" component={Requestform} />
+        <Route exact path="/donate" component={Donate} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
         <Route path="/products/:keyword" component={Products} />
@@ -113,7 +122,8 @@ function App() {
 
         <Route exact path="/login" component={LoginSignUp} />
 
-        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/cart" component={Cart} />  
+
 
         <ProtectedRoute exact path="/shipping" component={Shipping} />
 
@@ -124,6 +134,7 @@ function App() {
         <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
 
         <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
+
 
         <ProtectedRoute
           isAdmin={true}

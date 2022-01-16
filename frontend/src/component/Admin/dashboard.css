@@ -2,7 +2,7 @@
   width: 100vw;
   max-width: 100%;
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 0.5fr 8fr;
   position: absolute;
 }
 

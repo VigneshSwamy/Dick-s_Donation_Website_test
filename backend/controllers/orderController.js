@@ -2,6 +2,7 @@ const Order = require("../models/orderModel");
 const Product = require("../models/productModel");
 const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const nodemailer = require("nodemailer");
 
 // Create new Order
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
@@ -50,6 +51,39 @@ exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+
+// Send Email once new order is being created
+exports.emailNewOrder = catchAsyncErrors(async (req, res, next) => {
+  console.log("Trying to send email");
+  let { text } = "Test email received";
+	const transport = nodemailer.createTransport({
+		host: process.env.SMPT_HOST,
+		port: process.env.SMPT_PORT,
+		auth: {
+			user: process.env.SMPT_MAIL,
+			pass: process.env.SMPT_PASSWORD
+		}
+	})
+  await transport.sendMail({
+		from: process.env.SMPT_MAIL,
+		to: process.env.SMPT_MAIL,
+		subject: "test email",
+		html: `<div className="email" style="
+        border: 1px solid black;
+        padding: 20px;
+        font-family: sans-serif;
+        line-height: 2;
+        font-size: 20px; 
+        ">
+        <h2>Here is your email!</h2>
+        <p>${text}</p>
+    
+        <p>All the best, Locker Room Team</p>
+         </div>
+    `
+	})
+});
+
 // get logged in user  Orders
 exports.myOrders = catchAsyncErrors(async (req, res, next) => {
   const orders = await Order.find({ user: req.user._id });
@@ -89,7 +123,7 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHander("You have already delivered this order", 400));
   }
 
-  if (req.body.status === "Shipped") {
+  if (req.body.status === "picked") {
     order.orderItems.forEach(async (o) => {
       await updateStock(o.product, o.quantity);
     });

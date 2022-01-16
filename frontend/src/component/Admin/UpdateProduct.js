@@ -15,6 +15,9 @@ import SpellcheckIcon from "@material-ui/icons/Spellcheck";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import SideBar from "./Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import HeightIcon from '@mui/icons-material/Height';
+
 
 const UpdateProduct = ({ history, match }) => {
   const dispatch = useDispatch();
@@ -29,22 +32,20 @@ const UpdateProduct = ({ history, match }) => {
   } = useSelector((state) => state.product);
 
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
+  // const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const [SubCategory, setSubCategory] = useState("");
+  const [Size, setSize] = useState("");
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [oldImages, setOldImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
-  const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
+  const categories = [    
+    "FootWears",
+    "Clothing",
+    "Sports",    
   ];
 
   const productId = match.params.id;
@@ -55,8 +56,10 @@ const UpdateProduct = ({ history, match }) => {
     } else {
       setName(product.name);
       setDescription(product.description);
-      setPrice(product.price);
+      // setPrice(product.price);
       setCategory(product.category);
+      setSubCategory(product.SubCategory);
+      setSize(product.Size);
       setStock(product.Stock);
       setOldImages(product.images);
     }
@@ -91,10 +94,11 @@ const UpdateProduct = ({ history, match }) => {
 
     const myForm = new FormData();
 
-    myForm.set("name", name);
-    myForm.set("price", price);
+    myForm.set("name", name);    
     myForm.set("description", description);
     myForm.set("category", category);
+    myForm.set("SubCategory", SubCategory);
+    myForm.set("Size", Size);
     myForm.set("Stock", Stock);
 
     images.forEach((image) => {
@@ -146,21 +150,9 @@ const UpdateProduct = ({ history, match }) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-            </div>
-            <div>
-              <AttachMoneyIcon />
-              <input
-                type="number"
-                placeholder="Price"
-                required
-                onChange={(e) => setPrice(e.target.value)}
-                value={price}
-              />
-            </div>
-
-            <div>
+            </div> 
+            {/* <div>
               <DescriptionIcon />
-
               <textarea
                 placeholder="Product Description"
                 value={description}
@@ -168,7 +160,7 @@ const UpdateProduct = ({ history, match }) => {
                 cols="30"
                 rows="1"
               ></textarea>
-            </div>
+            </div> */}
 
             <div>
               <AccountTreeIcon />
@@ -183,6 +175,25 @@ const UpdateProduct = ({ history, match }) => {
                   </option>
                 ))}
               </select>
+            </div>
+            <div>
+              <FilterAltIcon />
+              <input
+                type="text"
+                placeholder="SubCategory"
+                required
+                onChange={(e) => setSubCategory(e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <HeightIcon />
+              <input
+                type="text"
+                placeholder="Size"
+                required
+                onChange={(e) => setSize(e.target.value)}
+              />
             </div>
 
             <div>
@@ -224,7 +235,7 @@ const UpdateProduct = ({ history, match }) => {
               type="submit"
               disabled={loading ? true : false}
             >
-              Create
+              Update Item
             </Button>
           </form>
         </div>

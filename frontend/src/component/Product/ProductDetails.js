@@ -22,12 +22,15 @@ import {
 import { Rating } from "@material-ui/lab";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 
-const ProductDetails = ({ match }) => {
+const ProductDetails = ({ match, history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
+  );
+  const { isAuthenticated } = useSelector(
+    (state) => state.user
   );
 
   const { success, error: reviewError } = useSelector(
@@ -40,6 +43,8 @@ const ProductDetails = ({ match }) => {
     readOnly: true,
     precision: 0.5,
   };
+  
+  const [requestForm, setrequestForm] = useState(false);
 
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
@@ -79,7 +84,14 @@ const ProductDetails = ({ match }) => {
     dispatch(newReview(myForm));
 
     setOpen(false);
-  };
+  }; 
+ 
+  const takeToRequestForm = () =>{
+    setrequestForm(true);
+    //console.log(requestForm);
+    history.push("/requestform");
+    // window.location.href = "http://localhost:3000/requestform";
+  }
 
   useEffect(() => {
     if (error) {
@@ -90,7 +102,8 @@ const ProductDetails = ({ match }) => {
     if (reviewError) {
       alert.error(reviewError);
       dispatch(clearErrors());
-    }
+    }   
+     
 
     if (success) {
       alert.success("Review Submitted Successfully");
@@ -105,7 +118,7 @@ const ProductDetails = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title={`${product.name} -- Shopping`} />
+          <MetaData title={`${product.name}`} />
           <div className="ProductDetails">
             <div>
               <Carousel>
@@ -154,6 +167,10 @@ const ProductDetails = ({ match }) => {
                   <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
                     {product.Stock < 1 ? "OutOfStock" : "InStock"}
                   </b>
+                  <button
+                    disabled={product.Stock < 1 ? false : true}                    
+                    onClick={takeToRequestForm}
+                  >Request products</button>
                 </p>
               </div>
 

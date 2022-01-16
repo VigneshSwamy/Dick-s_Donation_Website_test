@@ -6,10 +6,13 @@ const {
   getAllOrders,
   updateOrder,
   deleteOrder,
+  emailNewOrder
 } = require("../controllers/orderController");
 const router = express.Router();
 
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
+
+router.route("/order/email").post(isAuthenticatedUser, emailNewOrder);
 
 router.route("/order/new").post(isAuthenticatedUser, newOrder);
 

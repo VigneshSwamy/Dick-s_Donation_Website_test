@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
 import { Typography } from "@material-ui/core";
 import { useAlert } from "react-alert";
+import ReactToPrint from "react-to-print";
+import PrintIcon from "@mui/icons-material/Print";
 import {
   CardNumberElement,
   CardCvcElement,
@@ -18,6 +20,10 @@ import CreditCardIcon from "@material-ui/icons/CreditCard";
 import EventIcon from "@material-ui/icons/Event";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { createOrder, clearErrors } from "../../actions/orderAction";
+import { PDFDownloadLink, Document, Page, pdf } from "@react-pdf/renderer";
+import ConfirmOrder from "./ConfirmOrder";
+import RequestFormReplica from "./RequestFormReplica";
+
 
 const Payment = ({ history }) => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -28,14 +34,25 @@ const Payment = ({ history }) => {
   const elements = useElements();
   const payBtn = useRef(null);
 
+ 
+
+  // const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
 
+  
+
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100),
   };
+  // const upadtedcartItems = localStorage.getItem("cartItemss");
+  
 
+
+  const submitHandler = async (e) => {
+
+  
   const order = {
     shippingInfo,
     orderItems: cartItems,
@@ -43,11 +60,12 @@ const Payment = ({ history }) => {
     taxPrice: orderInfo.tax,
     shippingPrice: orderInfo.shippingCharges,
     totalPrice: orderInfo.totalPrice,
+
   };
-
-  const submitHandler = async (e) => {
+    
     e.preventDefault();
-
+    // console.log("upadtedcartItemspay",upadtedcartItems);
+    console.log("cartItems",cartItems);
     payBtn.current.disabled = true;
 
     try {
@@ -62,44 +80,37 @@ const Payment = ({ history }) => {
         config
       );
 
-      const client_secret = data.client_secret;
+      //const client_secret = data.client_secret;
 
-      if (!stripe || !elements) return;
+      //if (!stripe || !elements) return;
 
-      const result = await stripe.confirmCardPayment(client_secret, {
-        payment_method: {
-          card: elements.getElement(CardNumberElement),
-          billing_details: {
-            name: user.name,
-            email: user.email,
-            address: {
-              line1: shippingInfo.address,
-              city: shippingInfo.city,
-              state: shippingInfo.state,
-              postal_code: shippingInfo.pinCode,
-              country: shippingInfo.country,
-            },
-          },
-        },
-      });
+      // const result = await stripe.confirmCardPayment(client_secret, {
+      //   payment_method: {
+      //     card: elements.getElement(CardNumberElement),
+      //     billing_details: {
+      //       name: user.name,
+      //       email: user.email,
+      //       address: {
+      //         line1: shippingInfo.address,
+      //         city: shippingInfo.city,
+      //         state: shippingInfo.state,
+      //         postal_code: shippingInfo.pinCode,
+      //         country: shippingInfo.country,
+      //       },
+      //     },
+      //   },
+      // });
+      //result.paymentIntent.status === "succeeded";
 
-      if (result.error) {
-        payBtn.current.disabled = false;
-
-        alert.error(result.error.message);
+      if (data.success === true) {
+        // order.paymentInfo = {
+        //   id: result.paymentIntent.id,
+        //   status: result.paymentIntent.status,
+        // };
+        dispatch(createOrder(order));
+        history.push("/success");
       } else {
-        if (result.paymentIntent.status === "succeeded") {
-          order.paymentInfo = {
-            id: result.paymentIntent.id,
-            status: result.paymentIntent.status,
-          };
-
-          dispatch(createOrder(order));
-
-          history.push("/success");
-        } else {
-          alert.error("There's some issue while processing payment ");
-        }
+        alert.error("There's some issue while processing payment ");
       }
     } catch (error) {
       payBtn.current.disabled = false;
@@ -107,7 +118,9 @@ const Payment = ({ history }) => {
     }
   };
 
-  useEffect(() => {
+  
+
+  React.useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
@@ -118,29 +131,20 @@ const Payment = ({ history }) => {
     <Fragment>
       <MetaData title="Payment" />
       <CheckoutSteps activeStep={2} />
-      <div className="paymentContainer">
+      <div className="paymentContainer" >
         <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
-          <Typography>Card Info</Typography>
-          <div>
-            <CreditCardIcon />
-            <CardNumberElement className="paymentInput" />
-          </div>
-          <div>
-            <EventIcon />
-            <CardExpiryElement className="paymentInput" />
-          </div>
-          <div>
-            <VpnKeyIcon />
-            <CardCvcElement className="paymentInput" />
-          </div>
-
+          <Typography className="Typography">Order Place</Typography>
+           <hr></hr>
+           <br/>
+           <br/>
           <input
             type="submit"
-            value={`Pay - $${orderInfo && orderInfo.totalPrice}`}
+            value={`Proceed To Place Order`}
             ref={payBtn}
             className="paymentFormBtn"
           />
         </form>
+       
       </div>
     </Fragment>
   );

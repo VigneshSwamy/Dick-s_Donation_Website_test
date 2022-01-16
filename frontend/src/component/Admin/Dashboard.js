@@ -69,33 +69,33 @@ const Dashboard = () => {
       <Sidebar />
 
       <div className="dashboardContainer">
-        <Typography component="h1">Dashboard</Typography>
+        <Typography component="h1">Inventory Management</Typography>
 
         <div className="dashboardSummary">
           <div>
             <p>
-              Total Amount <br /> ${totalAmount}
+              Summary <br />
             </p>
           </div>
           <div className="dashboardSummaryBox2">
             <Link to="/admin/products">
-              <p>Product</p>
+              <p>Item Availability</p>
               <p>{products && products.length}</p>
             </Link>
             <Link to="/admin/orders">
-              <p>Orders</p>
+              <p>Orders Received</p>
               <p>{orders && orders.length}</p>
             </Link>
             <Link to="/admin/users">
-              <p>Users</p>
+              <p>Manage Users</p>
               <p>{users && users.length}</p>
             </Link>
           </div>
         </div>
 
-        <div className="lineChart">
+        {/* <div className="lineChart">
           <Line data={lineState} />
-        </div>
+        </div> */}
 
         <div className="doughnutChart">
           <Doughnut data={doughnutState} />

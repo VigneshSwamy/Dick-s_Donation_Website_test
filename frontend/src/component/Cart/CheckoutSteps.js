@@ -16,7 +16,7 @@ const CheckoutSteps = ({ activeStep }) => {
       icon: <LibraryAddCheckIcon />,
     },
     {
-      label: <Typography>Payment</Typography>,
+      label: <Typography>Order Placement</Typography>,
       icon: <AccountBalanceIcon />,
     },
   ];
