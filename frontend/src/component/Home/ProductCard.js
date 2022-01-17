@@ -25,8 +25,8 @@ const ProductCard = ({ product, history }) => {
   const takeToRequestForm = () => {
     setrequestForm(true);
     //console.log(requestForm);
-    history.push("/requestform");
-    // window.location.href = "http://localhost:3000/requestform";
+    //history.push("/requestform");
+    window.location.href = "http://localhost:3000/requestform";
   };
 
   const [SubCategory, setSubCategory] = useState(""); 
@@ -115,10 +115,10 @@ const ProductCard = ({ product, history }) => {
             <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
               {product.Stock < 1 ? "OutOfStock" : "InStock"}
             </b> <br/>
-            <button
+            {/* <button
                     disabled={product.Stock < 1 ? false : true}                    
                     onClick={takeToRequestForm}
-                  >Request</button>
+                  >Request</button> */}
           </p>
         </div>
         <div className="addshopcart" onClick={addToCartHandler}>
