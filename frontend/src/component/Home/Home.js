@@ -15,7 +15,7 @@ import Typography from "@material-ui/core/Typography";
 const Home = ({ history }) => {
 
   const categories = [
-    "FootWears",
+    "Footwear",
     "Clothing",
     "Sports"    
   ];
@@ -91,7 +91,7 @@ const Home = ({ history }) => {
             <form className="searchBoxbar" onSubmit={searchSubmitHandler}>
               <input
                 type="text"
-                placeholder="Search a Product ..."
+                placeholder="Search Product"
                 onChange={(e) => setKeyword(e.target.value)}
               />
               <input type="submit" value="Search" />

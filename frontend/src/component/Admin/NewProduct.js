@@ -84,9 +84,11 @@ const NewProduct = ({ history }) => {
   return (
     <Fragment>
       <MetaData title="Create Product" />
+  
       <div className="dashboard">
         <SideBar />
         <div className="newProductContainer">
+        <img src={"https://i.ibb.co/6Zv0kF9/bar.png"} alt={"Bar"} />
           <form
             className="createProductForm"
             encType="multipart/form-data"

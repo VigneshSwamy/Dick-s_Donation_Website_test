@@ -2,10 +2,21 @@
   height: 100vh;
   width: 100vw;
   max-width: 100%;
-  display: grid;
-  place-items: center;
+  display: block;
+  place-items: start;
+  padding-top: 20vmax;
   background-color: white;
   position: fixed;
+  
+}
+.contactContainer>h1{
+  font-family:"Roboto";
+  text-align: center;
+  font-size: 3vmax;
+}
+.contactContainer>h2{
+  font-family:"Roboto";
+  text-align: center;
 }
 
 .mailBtn {
