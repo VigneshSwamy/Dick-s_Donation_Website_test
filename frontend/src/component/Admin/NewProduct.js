@@ -30,7 +30,7 @@ const NewProduct = ({ history }) => {
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
-  const categories = ["FootWears", "Clothing", "Sports"];
+  const categories = ["FootWears", "Clothing", "Sports","miscellaneous"];
 
   useEffect(() => {
     if (error) {

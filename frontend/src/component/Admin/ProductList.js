@@ -86,6 +86,18 @@ const ProductList = ({ history }) => {
       headerName: "Stock",     
       minWidth: 50,
       flex: 0.1,
+      cellClassName: (params) => {
+        
+          if(params.getValue(params.id, "stock")> 55){
+            return "greenColor";
+          }
+          else if((params.getValue(params.id, "stock"))<55 && (params.getValue(params.id, "stock"))>0){
+            return "yellowColor";
+          }
+          else if((params.getValue(params.id, "stock"))===0){
+            return "redColor";
+          }
+      },
     },
     {
       field: "actions",     

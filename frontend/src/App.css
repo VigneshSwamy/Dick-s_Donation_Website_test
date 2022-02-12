@@ -25,3 +25,7 @@ input[type="number"] {
 .redColor {
   color: red !important;
 }
+
+.yellowColor {
+  color: rgb(40, 29, 204) !important;
+}
