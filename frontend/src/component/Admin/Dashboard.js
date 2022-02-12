@@ -99,6 +99,7 @@ const Dashboard = () => {
 
         <div className="doughnutChart">
           <Doughnut data={doughnutState} />
+          <img src={"https://i.ibb.co/1ryF9fz/pie2.png"} alt={"Pie"} />
         </div>
       </div>
     </div>

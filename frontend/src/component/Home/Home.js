@@ -12,7 +12,17 @@ import Pagination from "react-js-pagination";
 import Typography from "@material-ui/core/Typography";
 
 const Home = ({ history }) => {
+<<<<<<< HEAD
   const categories = ["FootWears", "Clothing", "Sports", "Miscellaneous"];
+=======
+
+  const categories = [
+    "Footwear",
+    "Clothing",
+    "Sports"    
+  ];
+
+>>>>>>> ebbae6e737e19e52d5ae654e2b44ccbb88feb7e7
 
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -86,7 +96,7 @@ const Home = ({ history }) => {
             <form className="searchBoxbar" onSubmit={searchSubmitHandler}>
               <input
                 type="text"
-                placeholder="Search a Product ..."
+                placeholder="Search Product"
                 onChange={(e) => setKeyword(e.target.value)}
               />
               <input type="submit" value="Search" />

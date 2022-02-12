@@ -1,58 +1,105 @@
 .updateOrderForm {
-  margin: 5vmax 0;
-  padding: 3vmax;
-  background-color: white;
+    margin: 5vmax 0;
+    padding: 3vmax;
+    background-color: white;
 }
 
-.updateOrderForm > div {
-  display: flex;
-  width: 100%;
-  align-items: center;
-}
-.updateOrderForm > div > select {
-  padding: 1vmax 4vmax;
-  margin: 2rem 0;
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.267);
-  border-radius: 4px;
-  font: 300 0.9vmax cursive;
-  outline: none;
+.updateOrderForm>div {
+    display: flex;
+    width: 100%;
+    align-items: center;
 }
 
-.updateOrderForm > div > svg {
-  position: absolute;
-  transform: translateX(1vmax);
-  font-size: 1.6vmax;
-  color: rgba(0, 0, 0, 0.623);
+.updateOrderForm>div>select {
+    padding: 1vmax 4vmax;
+    margin: 2rem 0;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    border-radius: 4px;
+    font: 300 0.9vmax "Roboto";
+    outline: none;
 }
 
-.printComponent{
-  display: flex;
-  justify-content: center;
-  margin-top:-20px;
-  font: 600 1.1vmax "Roboto";
+.updateOrderForm>div>svg {
+    position: absolute;
+    transform: translateX(1vmax);
+    font-size: 1.6vmax;
+    color: rgba(0, 0, 0, 0.623);
 }
-.printComponent > p{
-  margin-left:20px;
-  margin-top: 2.5px;
+
+.printComponent {
+    display: flex;
+    justify-content: center;
+    margin-top: -20px;
+    font: 600 1.1vmax "Roboto";
 }
-.printComponent:hover{
-  color: #065749;
-  transform: scale(1.1);
+
+.printComponent>p {
+    margin-left: 20px;
+    margin-top: 2.5px;
+}
+
+.printComponent:hover {
+    color: #065749;
+    transform: scale(1.1);
 }
 
 @media screen and (max-width: 600px) {
-  .updateOrderForm {
-    padding: 5vmax;
-  }
-
-  .updateOrderForm > div > select {
-    padding: 2.5vmax 5vmax;
-    font: 300 1.7vmax cursive;
-  }
-
-  .updateOrderForm > div > svg {
-    font-size: 2.8vmax;
-  }
+    .updateOrderForm {
+        margin: 0;
+        padding: 0;
+        width: 100;
+        background-color: white;
+    }
+    .updateOrderForm>img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    .updateOrderForm>img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    .confirmshippingArea>p:first-of-type {
+        padding-left: 2vmax;
+        padding-top: 7vmax;
+    }
+    .confirmshippingArea>p:nth-of-type(2) {
+        padding-left: 2vmax;
+        padding-top: 1vmax;
+    }
+    .confirmshippingArea>.orderDetailsContainerBox {
+        padding-left: 0vmax;
+    }
+    .confirmshippingArea {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        /* width: 100%; */
+    }
+    .confirmCartItems {
+        padding-left: 2vmax;
+        margin: 0;
+    }
+    .confirmCartItems>.confirmCartItemsContainer {
+        padding-left: 1vmax;
+        margin: 0;
+    }
+    /* .confirmOrderPage>.confirmCartItems>p {
+        padding-left: 7vmax;
+    } */
+    .updateOrderForm {
+        padding: 5vmax;
+    }
+    .updateOrderForm>div>select {
+        padding: 2.5vmax 5vmax;
+        font: 300 1.7vmax "Roboto";
+    }
+    .updateOrderForm>div>svg {
+        font-size: 2.8vmax;
+    }
 }

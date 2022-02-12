@@ -130,6 +130,12 @@ const UpdateProduct = ({ history, match }) => {
 
   return (
     <Fragment>
+      <div>
+      <img src={"https://i.ibb.co/KKZfcZ0/ss.png"} alt={"Bar"} width={390}  />
+      </div>
+      <div>
+      <img src={"https://i.ibb.co/bWsCCMh/unnamed.png"} alt={"Bar"} width={390}  />
+      </div>
       <MetaData title="Create Product" />
       <div className="dashboard">
         <SideBar />
@@ -151,17 +157,7 @@ const UpdateProduct = ({ history, match }) => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div> 
-            {/* <div>
-              <DescriptionIcon />
-              <textarea
-                placeholder="Product Description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                cols="30"
-                rows="1"
-              ></textarea>
-            </div> */}
-
+            
             <div>
               <AccountTreeIcon />
               <select

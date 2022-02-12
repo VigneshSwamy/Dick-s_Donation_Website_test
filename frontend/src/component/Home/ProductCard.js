@@ -113,7 +113,7 @@ const ProductCard = ({ product, history }) => {
           <p>
             Status:
             <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-              {product.Stock < 1 ? "OutOfStock" : "InStock"}
+              {product.Stock < 1 ? " Out Of Stock" : " In Stock"}
             </b> <br/>
             {/* <button
                     disabled={product.Stock < 1 ? false : true}                    
@@ -127,7 +127,10 @@ const ProductCard = ({ product, history }) => {
             Add to Cart
           </button>
         </div>
+        <hr></hr>
+
       </div>
+      
     </div>
 
     // </Link>

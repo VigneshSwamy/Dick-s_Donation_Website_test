@@ -79,8 +79,8 @@ const ProcessOrder = ({ history, match }) => {
                     <div>
                       <p>Order Placed by:</p>
                       <span>{order.user && order.user.name}</span>
-                      <hr></hr>
-                      <span>&nbsp;</span>
+                      </div>
+                      <div>
                       <p>Designation:</p>
                       <span>{order.user && order.shippingInfo.userLoggedInDesignation}</span>
                     </div>
@@ -134,13 +134,13 @@ const ProcessOrder = ({ history, match }) => {
                             <span>{item.name}</span>
                           </div>
                           <div className="cartitemholdercat">
-                            <span>Subcategory({item.SubCategory})</span>
+                            <span>{item.SubCategory}</span>
                           </div>
                           <div className="cartitemholdersize">
-                            <span>Size({item.ProductSize})</span>
+                            <span>{item.ProductSize}</span>
                           </div>
                           <div className="cartitemholderquantity">
-                            <span>Quantity({item.quantity})</span>
+                            <span>x {item.quantity}</span>
                           </div>
                         </div>
                       ))}
@@ -167,7 +167,7 @@ const ProcessOrder = ({ history, match }) => {
                   onSubmit={updateOrderSubmitHandler}
                 >
                   <h1>Process Order</h1>
-
+                  <img src={"https://i.imgur.com/dLxRJyB.png"} alt={"Risk"} />
                   <div>
                     <AccountTreeIcon />
                     <select onChange={(e) => setStatus(e.target.value)}>

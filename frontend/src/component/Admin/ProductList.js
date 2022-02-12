@@ -55,7 +55,7 @@ const ProductList = ({ history }) => {
   }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
   const columns = [
-    { field: "id", headerName: "Product ID", Width:100, flex: 0.2 },
+    { field: "id", headerName: "SKU ID", Width:100, flex: 0.2 },
 
     {
       field: "name",
@@ -146,8 +146,10 @@ const ProductList = ({ history }) => {
 
       <div className="dashboard">
         <SideBar />
+        <img src={"https://i.ibb.co/6Zv0kF9/bar.png"} alt={"Bar"} />
         <div className="productListContainer">
           <h1 id="productListHeading">ALL ITEMS </h1>
+         
 
           <DataGrid
             rows={rows}
