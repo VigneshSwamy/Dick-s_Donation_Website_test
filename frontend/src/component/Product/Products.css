@@ -120,20 +120,33 @@
 }
 
 @media screen and (max-width: 600px) {
+    /* .filCategories {
+        width: 100%;
+    } */
     .filterBox {
         width: 90%;
         position: static;
         margin: auto;
     }
+<<<<<<< HEAD
     .filterBox {
         width: 90%;
         position: static;
         margin: auto;
     }
+=======
+>>>>>>> 48d060fed2d463a447ee7d9f8f37cd559f362adb
     .filterBox>fieldset {
         border: 1px solid rgba(0, 0, 0, 0.329);
         width: 100%;
     }
+<<<<<<< HEAD
+=======
+    /* .filterBox>div {
+        display: flex;
+        width: 100%;
+    } */
+>>>>>>> 48d060fed2d463a447ee7d9f8f37cd559f362adb
     .page-link {
         font: 300 1.7vmax "Roboto";
     }

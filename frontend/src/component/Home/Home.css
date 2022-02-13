@@ -136,7 +136,7 @@ div>div>div>p>button {
 
 .productCard:hover {
     box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
-    background-color: rgb(2552, 255, 255);
+    background-color: rgb(255, 255, 255);
     transform: translateY(-1vmax);
 }
 
@@ -156,7 +156,7 @@ div>div>div>p>button {
     flex-direction: column-reverse;
     /* align: start; */
     padding-right: 20vmax;
-    width: 150%;
+    width: 100%;
 }
 
 .productname {
@@ -300,9 +300,18 @@ div>div>div>p>button {
         font: 300 1.5vmax "Roboto";
         outline: none;
     }
+    .productCard {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .productCard>img {
         width: 40%;
         height: 40%;
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        /* top: 50%; */
     }
 
     .productCard>p {
