@@ -16,6 +16,7 @@
     min-height: 30vh;
 }
 
+
 .paginationBox {
     display: flex;
     justify-content: center;
@@ -89,7 +90,7 @@
 }
 
 .filCategories {
-    flex-basis: 75%;
+    flex-basis: 100%;
 }
 
 
@@ -120,9 +121,18 @@
 
 @media screen and (max-width: 600px) {
     .filterBox {
-        width: 20vmax;
+        width: 90%;
         position: static;
         margin: auto;
+    }
+    .filterBox {
+        width: 90%;
+        position: static;
+        margin: auto;
+    }
+    .filterBox>fieldset {
+        border: 1px solid rgba(0, 0, 0, 0.329);
+        width: 100%;
     }
     .page-link {
         font: 300 1.7vmax "Roboto";

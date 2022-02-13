@@ -127,7 +127,7 @@ const ProductCard = ({ product, history }) => {
             Add to Cart
           </button>
         </div>
-        <hr></hr>
+        {/* <hr></hr> */}
 
       </div>
       
