@@ -113,6 +113,11 @@
 }
 
 @media screen and (max-width: 600px) {
+    div>img {
+        padding-top: 70px;
+        padding-left: 5px;
+        padding-right: 20px;
+    }
     .newProductContainer {
         background-color: rgb(255, 255, 255);
     }
