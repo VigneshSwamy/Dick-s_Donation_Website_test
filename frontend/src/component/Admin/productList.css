@@ -49,6 +49,9 @@
 .MuiDataGrid-columnHeader div {
     color: rgb(255, 255, 255);
 }
+.custom[role="columnheader"]{  
+  font-size: 67px;  
+}  
 
 @media screen and (max-width: 600px) {
     .dashboard>.productListContainer>h1 {
@@ -57,6 +60,25 @@
     footer {
         display: none;
     }
+    .MuiDataGrid-columnHeader div {
+      font: 300 4vw "Roboto";
+      color: rgb(255, 255, 255);
+  }
+  .MuiDataGrid-columnHeadersInner{
+    font: 300 4vw "Roboto";
+  }
+  .MuiDataGrid-columnHeaders{
+    font: 300 4vw "Roboto";  
+  }
+  .MuiDataGrid-columnHeaderTitleContainer{
+    font: 300 4vw "Roboto"; 
+  }
+  .MuiDataGrid-columnHeaderTitle{
+    font: 300 4vw "Roboto"; 
+  }
+  .MuiDataGrid-columnHeader div {
+    font: 500 4.5vw "Roboto" !important;
+}
     .dashboard>img {
         display: block;
         margin-left: auto;

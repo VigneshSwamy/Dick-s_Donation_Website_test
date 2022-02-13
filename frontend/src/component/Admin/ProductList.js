@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
+// import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from '@mui/x-data-grid';
 import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -15,6 +16,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SideBar from "./Sidebar";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
+
 
 const ProductList = ({ history }) => {
   const dispatch = useDispatch();
@@ -59,6 +61,7 @@ const ProductList = ({ history }) => {
 
     {
       field: "name",
+      cssClass: "custom",  
       headerName: "Name",
       minWidth: 50,
       flex: 0.1,
@@ -156,7 +159,7 @@ const ProductList = ({ history }) => {
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
-            className="productListTable"
+            className="productListTable"           
             autoHeight
           />
         </div>
