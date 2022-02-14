@@ -66,10 +66,14 @@ const ConfirmOrder = ({ history }) => {
                 <span>&nbsp;</span>
                 <p>Designation:</p>
                 <span>{shippingInfo.userLoggedInDesignation}</span>
-              </div>
+              </div>              
               <div>
                 <p>Deliver To Student Id:</p>
                 <span>{shippingInfo.receivingPersonName}</span>
+              </div>
+              <div>
+                <p>Order Date:</p>
+                <span>{shippingInfo.orderDate}</span>
               </div>
               <div>
                 <p>Phone:</p>

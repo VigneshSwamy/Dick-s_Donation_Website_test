@@ -131,10 +131,10 @@ const UpdateProduct = ({ history, match }) => {
   return (
     <Fragment>
       <div>
-      <img src={"https://i.ibb.co/KKZfcZ0/ss.png"} alt={"Bar"} width={390}  />
+      <img src={"https://i.ibb.co/7rZh1SW/Sweat-shirt-inventory-trajectory-with-title-0214.png"} alt={"Bar"} width={390}  />
       </div>
       <div>
-      <img src={"https://i.ibb.co/bWsCCMh/unnamed.png"} alt={"Bar"} width={390}  />
+      <img src={"https://i.ibb.co/ysMpFV3/Demand-forcast.png"} alt={"Bar"} width={390}  />
       </div>
       <MetaData title="Create Product" />
       <div className="dashboard">

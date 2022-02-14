@@ -56,7 +56,7 @@ const Dashboard = () => {
     labels: ["Out of Stock", "InStock"],
     datasets: [
       {
-        backgroundColor: ["#00A6B4", "#6800B4"],
+        backgroundColor: ["#DD0000", "#28A000"],
         hoverBackgroundColor: ["#4B5000", "#35014F"],
         data: [outOfStock, products.length - outOfStock],
       },
@@ -91,16 +91,31 @@ const Dashboard = () => {
               <p>{users && users.length}</p>
             </Link>
           </div>
+          <div>
+            <p>
+              Stock Status <br />
+            </p>
+          </div>
+          <div className="doughnutChart">
+            <Doughnut data={doughnutState} />
+          </div>
+          <div>
+            <p>
+              Order Process Status <br />
+            </p>
+          </div>
+          <img src={"https://i.ibb.co/1ryF9fz/pie2.png"} alt={"Pie"} />
         </div>
 
         {/* <div className="lineChart">
           <Line data={lineState} />
         </div> */}
 
-        <div className="doughnutChart">
+        {/* <div className="doughnutChart">
           <Doughnut data={doughnutState} />
           <img src={"https://i.ibb.co/H459Rf0/order-status.png"} alt={"Pie"} />
-        </div>
+        </div> */}
+        
       </div>
     </div>
   );

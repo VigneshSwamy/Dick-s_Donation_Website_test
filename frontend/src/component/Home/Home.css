@@ -120,6 +120,12 @@ div>div>div>p>button {
     margin: 1vmax 0.5vmax;
     margin-bottom: 0;
 }
+.productCard{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .productCard>span {
     margin: 0.5vmax;
@@ -307,6 +313,7 @@ div>div>div>p>button {
         align-items: center; */
         /* top: 50%; */
     }
+
     .productCard>p {
         font-size: 1.7vmax;
     }

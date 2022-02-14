@@ -10,6 +10,10 @@ const orderSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
+    orderDate :{
+      type: String,
+      required: false,
+    },
     address: {
       type: String,
       required: true,

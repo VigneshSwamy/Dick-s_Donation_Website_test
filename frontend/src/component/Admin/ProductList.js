@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
+// import { DataGrid } from '@mui/x-data-grid';
 import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -15,6 +16,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SideBar from "./Sidebar";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
+
 
 const ProductList = ({ history }) => {
   const dispatch = useDispatch();
@@ -59,6 +61,7 @@ const ProductList = ({ history }) => {
 
     {
       field: "name",
+      cssClass: "custom",  
       headerName: "Name",
       minWidth: 50,
       flex: 0.1,
@@ -86,6 +89,18 @@ const ProductList = ({ history }) => {
       headerName: "Stock",     
       minWidth: 50,
       flex: 0.1,
+      cellClassName: (params) => {
+        
+          if(params.getValue(params.id, "stock")> 55){
+            return "greenColor";
+          }
+          else if((params.getValue(params.id, "stock"))<55 && (params.getValue(params.id, "stock"))>0){
+            return "yellowColor";
+          }
+          else if((params.getValue(params.id, "stock"))===0){
+            return "redColor";
+          }
+      },
     },
     {
       field: "actions",     
@@ -134,7 +149,7 @@ const ProductList = ({ history }) => {
 
       <div className="dashboard">
         <SideBar />
-        <img src={"https://i.ibb.co/6Zv0kF9/bar.png"} alt={"Bar"} />
+        <img src={"https://i.ibb.co/YXdRhb2/Number-in-stock-01.png"} alt={"Bar"} />
         <div className="productListContainer">
           <h1 id="productListHeading">ALL ITEMS </h1>
          
@@ -144,7 +159,7 @@ const ProductList = ({ history }) => {
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
-            className="productListTable"
+            className="productListTable"           
             autoHeight
           />
         </div>

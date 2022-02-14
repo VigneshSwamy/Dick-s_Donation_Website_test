@@ -11,14 +11,10 @@ import Donate from "../donate/Donate";
 import Pagination from "react-js-pagination";
 import Typography from "@material-ui/core/Typography";
 
-
 const Home = ({ history }) => {
+  const categories = ["FootWears", "Clothing", "Sports", "Miscellaneous"];
 
-  const categories = [
-    "Footwear",
-    "Clothing",
-    "Sports"    
-  ];
+
 
 
   const alert = useAlert();
@@ -57,7 +53,7 @@ const Home = ({ history }) => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    dispatch(getProduct(keyword, currentPage,category));
+    dispatch(getProduct(keyword, currentPage, category));
   }, [dispatch, currentPage, category, error, alert]);
 
   const searchSubmitHandler = (e) => {
@@ -80,7 +76,9 @@ const Home = ({ history }) => {
           <div className="banner">
             <p>Welcome to Locker Room 345 !!!</p>
             <h1>SPORTS MAKE PEOPLE BETTER</h1>
-
+            <div className="teachercredit">
+            <p>Remaining Credits Left: <span>&nbsp;7</span></p>
+            </div>
             <a href="#container">
               <button>
                 Scroll <CgMouse />
@@ -97,7 +95,7 @@ const Home = ({ history }) => {
               <input type="submit" value="Search" />
             </form>
           </div>
-          <div className="filterBoxhome">  
+          <div className="filterBoxhome">
             <div className="filCategorieshome">
               <fieldset>
                 <Typography component="legend">Categories</Typography>
@@ -113,7 +111,7 @@ const Home = ({ history }) => {
                   ))}
                 </ul>
               </fieldset>
-            </div>            
+            </div>
           </div>
           <h2 className="homeHeading">All Products</h2>
 
