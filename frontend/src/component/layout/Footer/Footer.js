@@ -16,7 +16,7 @@ const Footer = () => {
       <div className="midFooter">        
         <img src={lockerroomlogo} alt="" />
         <p><span>Presents From Us Not Only On Christmas </span><br /><span>But Everyday !!!</span></p>
-        <p>&copy; 2022 Locker Room 345 </p>
+        <p>&copy; 2022 School Prism </p>
       </div>
 
       <div className="rightFooter">

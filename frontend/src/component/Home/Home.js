@@ -74,16 +74,16 @@ const Home = ({ history }) => {
           <MetaData title="Donate & help" />
 
           <div className="banner">
-            <p>Welcome to Locker Room 345 !!!</p>
-            <h1>SPORTS MAKE PEOPLE BETTER</h1>
+            <p>Welcome to School Prism !!!</p>
+            {/* <h1>SPORTS MAKE PEOPLE BETTER</h1> */}
             <div className="teachercredit">
             <p>Remaining Credits Left: <span>&nbsp;7</span></p>
             </div>
-            <a href="#container">
+            {/* <a href="#container">
               <button>
                 Scroll <CgMouse />
               </button>
-            </a>
+            </a> */}
           </div>
           <div className="searchbar">
             <form className="searchBoxbar" onSubmit={searchSubmitHandler}>

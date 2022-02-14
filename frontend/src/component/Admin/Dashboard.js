@@ -101,7 +101,7 @@ const Dashboard = () => {
           </div>
           <div>
             <p>
-              Order Process Status <br />
+              Order Status <br />
             </p>
           </div>
           <img src={"https://i.ibb.co/1ryF9fz/pie2.png"} alt={"Pie"} />

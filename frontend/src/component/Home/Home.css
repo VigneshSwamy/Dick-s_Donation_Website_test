@@ -19,6 +19,8 @@
 
 .banner>p {
     font: 600 1.9vmax "Lucida Sans";
+    top:100px;
+
 }
 
 .banner>a>button {
