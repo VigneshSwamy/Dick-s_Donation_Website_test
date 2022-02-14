@@ -74,10 +74,10 @@ const Home = ({ history }) => {
           <MetaData title="Donate & help" />
 
           <div className="banner">
-            <p>Welcome to School Prism !!!</p>
+            <p>Welcome to School Prism </p>
             {/* <h1>SPORTS MAKE PEOPLE BETTER</h1> */}
             <div className="teachercredit">
-            <p>Remaining Credits Left: <span>&nbsp;7</span></p>
+            <p>Credits<br></br>Left: <span>7</span></p>
             </div>
             {/* <a href="#container">
               <button>
