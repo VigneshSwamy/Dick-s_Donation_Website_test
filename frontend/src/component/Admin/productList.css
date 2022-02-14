@@ -49,42 +49,50 @@
 .MuiDataGrid-columnHeader div {
     color: rgb(255, 255, 255);
 }
-.custom[role="columnheader"]{  
-  font-size: 67px;  
-}  
+
+.custom[role="columnheader"] {
+    font-size: 67px;
+}
 
 @media screen and (max-width: 600px) {
     .dashboard>.productListContainer>h1 {
         margin: 0;
+        height: 0%;
     }
     footer {
         display: none;
     }
     .MuiDataGrid-columnHeader div {
-      font: 300 4vw "Roboto";
-      color: rgb(255, 255, 255);
-  }
-  .MuiDataGrid-columnHeadersInner{
-    font: 300 4vw "Roboto";
-  }
-  .MuiDataGrid-columnHeaders{
-    font: 300 4vw "Roboto";  
-  }
-  .MuiDataGrid-columnHeaderTitleContainer{
-    font: 300 4vw "Roboto"; 
-  }
-  .MuiDataGrid-columnHeaderTitle{
-    font: 300 4vw "Roboto"; 
-  }
-  .MuiDataGrid-columnHeader div {
-    font: 500 4.5vw "Roboto" !important;
-}
+        font: 300 4vw "Roboto";
+        color: rgb(255, 255, 255);
+    }
+    .MuiDataGrid-columnHeadersInner {
+        font: 300 4vw "Roboto";
+    }
+    .MuiDataGrid-columnHeaders {
+        font: 300 4vw "Roboto";
+    }
+    .MuiDataGrid-columnHeaderTitleContainer {
+        font: 300 4vw "Roboto";
+    }
+    .MuiDataGrid-columnHeaderTitle {
+        font: 300 4vw "Roboto";
+    }
+    .MuiDataGrid-columnHeader div {
+        font: 500 4.5vw "Roboto" !important;
+    }
     .dashboard>img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 7vmax;
-        width: 90%;
+        height: 80%;
+        width: 80%;
+        padding-left: 10%;
+        padding-top: 10%;
+        padding-bottom: 13%;
+        /* padding-top: 12%; */
+        /* display: block; */
+        /* margin-left: auto;
+        margin-right: auto; */
+        /* margin-top: 7vmax; */
+        /* width: 90%; */
     }
     .productListTable div {
         font: 300 4vw "Roboto";

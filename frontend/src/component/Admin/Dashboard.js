@@ -53,11 +53,11 @@ const Dashboard = () => {
   };
 
   const doughnutState = {
-    labels: ["Out of Stock", "InStock"],
+    labels: ["Out of Stock", "In Stock       "],
     datasets: [
       {
-        backgroundColor: ["#DD0000", "#28A000"],
-        hoverBackgroundColor: ["#4B5000", "#35014F"],
+        backgroundColor: ["#d53f3f", "#7cd583"],
+        hoverBackgroundColor: ["#ad2626", "#60d66a"],
         data: [outOfStock, products.length - outOfStock],
       },
     ],
@@ -111,6 +111,10 @@ const Dashboard = () => {
           <Line data={lineState} />
         </div> */}
 
+        {/* <div className="doughnutChart">
+          <Doughnut data={doughnutState} />
+          <img src={"https://i.ibb.co/H459Rf0/order-status.png"} alt={"Pie"} />
+        </div> */}
         
       </div>
     </div>

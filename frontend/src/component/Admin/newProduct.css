@@ -114,13 +114,15 @@
 
 @media screen and (max-width: 600px) {
     div>img {
-        padding-top: 20px;
-        padding-left: 15%;
-        /* padding-right: 20px; */
+        padding-top: 50px;
+        padding-left: 7%;
+        padding-right: 0%;
         height: 40%;
-        width: 70%;
+        width: 90%;
+        padding-bottom: 0;
     }
     .newProductContainer {
+        /* margin-top: -50px; */
         background-color: rgb(255, 255, 255);
     }
     .createProductForm {

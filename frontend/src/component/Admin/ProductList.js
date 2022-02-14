@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from "react";
-// import { DataGrid } from "@material-ui/data-grid";
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid } from "@material-ui/data-grid";
+// import { DataGrid } from '@mui/x-data-grid';
 import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -149,7 +149,7 @@ const ProductList = ({ history }) => {
 
       <div className="dashboard">
         <SideBar />
-        <img src={"https://i.ibb.co/6Zv0kF9/bar.png"} alt={"Bar"} />
+        <img src={"https://i.ibb.co/YXdRhb2/Number-in-stock-01.png"} alt={"Bar"} />
         <div className="productListContainer">
           <h1 id="productListHeading">ALL ITEMS </h1>
          
