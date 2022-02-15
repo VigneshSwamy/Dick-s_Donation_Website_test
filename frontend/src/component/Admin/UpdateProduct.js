@@ -42,13 +42,31 @@ const UpdateProduct = ({ history, match }) => {
   const [oldImages, setOldImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
-  const categories = [    
+  const [showText, setShowText] = useState(false);
+  const [showText1, setShowText1] = useState(false);
+  const Text = () => {
+    return (<div className="trajectorygraph">
+      <img src={"https://i.ibb.co/7rZh1SW/Sweat-shirt-inventory-trajectory-with-title-0214.png"} alt={"Bar"} width={390} />
+    </div>)
+  }
+
+  const Text1 = () => {
+    return (<div className="demandforecast">
+      <img src={"https://i.ibb.co/ysMpFV3/Demand-forcast.png"} alt={"Bar"} width={390} />
+    </div>)
+  }
+
+  const onClick = () => setShowText(!showText);
+  const onClick1 = () => setShowText1(!showText1);
+  const categories = [
     "FootWears",
     "Clothing",
-    "Sports",    
+    "Sports",
   ];
 
   const productId = match.params.id;
+
+
 
   useEffect(() => {
     if (product && product._id !== productId) {
@@ -94,7 +112,7 @@ const UpdateProduct = ({ history, match }) => {
 
     const myForm = new FormData();
 
-    myForm.set("name", name);    
+    myForm.set("name", name);
     myForm.set("description", description);
     myForm.set("category", category);
     myForm.set("SubCategory", SubCategory);
@@ -130,12 +148,23 @@ const UpdateProduct = ({ history, match }) => {
 
   return (
     <Fragment>
-      <div>
-      <img src={"https://i.ibb.co/7rZh1SW/Sweat-shirt-inventory-trajectory-with-title-0214.png"} alt={"Bar"} width={390}  />
+       <div className="Statistics">
+            <p>
+              Product Statistics <br />
+            </p>
+        </div>
+        <hr></hr>
+      <div className="inventory">
+        <button onClick={onClick}>Inventory Trajectory</button>
+        {showText ? <Text /> : null}        
       </div>
-      <div>
-      <img src={"https://i.ibb.co/ysMpFV3/Demand-forcast.png"} alt={"Bar"} width={390}  />
+      <div className="deandforcast">
+      <button onClick={onClick1}>Demand Forecast</button>
+        {showText1 ? <Text1 /> : null}
       </div>
+
+
+
       <MetaData title="Create Product" />
       <div className="dashboard">
         <SideBar />
@@ -146,6 +175,7 @@ const UpdateProduct = ({ history, match }) => {
             onSubmit={updateProductSubmitHandler}
           >
             <h1>Create Product</h1>
+            
 
             <div>
               <SpellcheckIcon />
@@ -156,8 +186,8 @@ const UpdateProduct = ({ history, match }) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-            </div> 
-            
+            </div>
+
             <div>
               <AccountTreeIcon />
               <select
@@ -181,7 +211,7 @@ const UpdateProduct = ({ history, match }) => {
                 onChange={(e) => setSubCategory(e.target.value)}
               />
             </div>
-            
+
             <div>
               <HeightIcon />
               <input
