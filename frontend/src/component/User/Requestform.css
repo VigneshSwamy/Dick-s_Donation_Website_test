@@ -86,7 +86,7 @@
     text-decoration: none;
     align-self: flex-end;
     transition: all 0.5s;
-    font: 500 0.8vmax "Gill Sans";
+    font: 500 0.8vmax "Roboto";
 }
 
 .RequestForm>a:hover {
@@ -141,7 +141,7 @@
         font-size: 2.8vmax;
     }
     .RequestForm>a {
-        font: 500 1.8vmax "Gill Sans";
+        font: 500 1.8vmax "Roboto";
     }
     .RequestBtn {
         font: 300 1.9vmax "Roboto";

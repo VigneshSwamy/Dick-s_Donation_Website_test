@@ -19,27 +19,28 @@
 
 .banner>p {
     font: 600 2.9vmax "Lucida Sans";
-    top:100px;
+    top: 100px;
     margin-top: 200px;
     color: black;
-
 }
 
-.teachercredit{
+.teachercredit {
     position: absolute;
     /* font: 500 2.0vmax "Lucida Sans"; */
     font-weight: 500;
-    top:30px;
-    right:100px;
-    animation: blinker 1s linear infinite;
-    color:black;
+    font-family: "Roboto";
+    top: 30px;
+    right: 100px;
+    animation: blinker 2s linear infinite;
+    color: black;
 }
 
 @keyframes blinker {
     50% {
-      opacity: 0;
+        opacity: 0;
     }
-  }
+}
+
 .banner>a>button {
     margin-bottom: 5vmax;
     cursor: pointer;
@@ -119,6 +120,7 @@ div>div>div>p>button {
     height: 15%;
     justify-content: center;
     align-items: center;
+    padding-left: 0;
 }
 
 .productCard>div {

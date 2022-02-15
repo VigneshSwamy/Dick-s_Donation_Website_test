@@ -229,7 +229,7 @@ button[disabled] {
 }
 
 .noReviews {
-    font: 400 1.3vmax "Gill Sans";
+    font: 400 1.3vmax "Roboto";
     text-align: center;
     color: rgba(0, 0, 0, 0.548);
 }
