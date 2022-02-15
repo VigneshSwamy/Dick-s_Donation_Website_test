@@ -72,7 +72,7 @@ const Dashboard = () => {
         <Typography component="h1">Inventory Management</Typography>
 
         <div className="dashboardSummary">
-          <div>
+          <div className = "summarybox">
             <p>
               Summary <br />
             </p>
@@ -91,6 +91,7 @@ const Dashboard = () => {
               <p>{users && users.length}</p>
             </Link>
           </div>
+          <hr></hr>
           <div>
             <p>
               Stock Status <br />
@@ -99,12 +100,14 @@ const Dashboard = () => {
           <div className="doughnutChart">
             <Doughnut data={doughnutState} />
           </div>
+          <hr></hr>
+
           <div>
             <p>
               Order Process Status <br />
             </p>
           </div>
-          <img src={"https://i.ibb.co/1ryF9fz/pie2.png"} alt={"Pie"} />
+          <img src={"https://i.ibb.co/GWTRnGp/Group-76-1.png"} alt={"Pie"} />
         </div>
 
         {/* <div className="lineChart">

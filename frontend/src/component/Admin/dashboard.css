@@ -31,14 +31,37 @@
     justify-content: center;
 }
 
-.dashboardSummary>div>p {
+.dashboardSummary>.summarybox>p {
     background-color: rgb(136, 181, 209);
     color: white;
     font: 300 1.3rem "Roboto";
     text-align: center;
     padding: 1.5rem;
+    margin-bottom: 20px;
+    width: 100%;
+    /* margin: 0 2rem; */
+}
+
+.dashboardSummary>div>p {
+    color: black;
+    font: 300 1.3rem "Roboto";
+    text-align: center;
+    padding: 1.5rem;
     width: 100%;
     margin: 0 2rem;
+}
+
+.dashboardSummary>hr {
+    color: rgb(71, 63, 68);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    /* font: 300 1.5rem "Roboto";
+    text-align: center;
+    padding: 1.5rem;
+    width: 100%;
+    margin: 0 2rem; */
 }
 
 .dashboardSummaryBox2>a {
@@ -79,17 +102,18 @@
 }
 
 @media screen and (max-width: 600px) {
-    .dashboard>.dashboardContainer>.doughnutChart>img {
+    .dashboardSummary>img {
         display: flex;
         margin-left: 0;
         /* align-items: start; */
         /* margin-right: auto; */
-        margin-top: 0vmax;
-        width: 130%;
+        padding-top: 1.5%;
+        /* width: 80%;
+        height: 80%; */
         margin-left: auto;
         margin-right: auto;
-        margin-top: -50px;
-        width: 100%;
+        padding-left: 0;
+        width: 80%;
     }
     .dashboard>.sidebar {
         display: none;

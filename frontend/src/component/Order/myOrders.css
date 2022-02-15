@@ -23,7 +23,9 @@
 }
 
 .myOrdersTable {
+    /* padding-top: 20%; */
     background-color: white;
+    transform: translateY(10%);
 }
 
 .myOrdersTable div {

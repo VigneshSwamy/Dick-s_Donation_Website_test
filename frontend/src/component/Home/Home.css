@@ -120,12 +120,12 @@ div>div>div>p>button {
     margin: 1vmax 0.5vmax;
     margin-bottom: 0;
 }
-.productCard{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
+.productCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .productCard>span {
     margin: 0.5vmax;
@@ -166,7 +166,7 @@ div>div>div>p>button {
 }
 
 .productname>P {
-    font: 500 1vmax cursive;
+    font: 500 1vmax "Roboto";
     font-size: larger;
     color: rgb(112, 110, 110);
     padding: 1vmax 2vmax;
@@ -313,7 +313,6 @@ div>div>div>p>button {
         align-items: center; */
         /* top: 50%; */
     }
-
     .productCard>p {
         font-size: 1.7vmax;
     }

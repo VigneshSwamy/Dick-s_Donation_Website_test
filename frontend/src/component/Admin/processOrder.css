@@ -32,7 +32,8 @@
     display: flex;
     justify-content: center;
     margin-top: -20px;
-    font: 600 1.1vmax "Roboto";
+    margin-bottom: 20px;
+    font: 600 2.1vmax "Roboto";
 }
 
 .printComponent>p {
