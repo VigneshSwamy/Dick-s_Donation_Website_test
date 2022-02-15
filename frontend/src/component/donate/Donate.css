@@ -15,7 +15,50 @@
 
 
 @media screen and (max-width: 600px) {
- 
+  .react-multi-carousel-list {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 200px;
+    position: relative;
+    
+  }
+  .div2{
+  
+    height:150px;  
+    filter: blur(2px);
+  }
+  .div2 img{
+    background-size: cover;
+    height:100%;
+    width:100%;
+  }
+  .div3{
+    border:2px solid rgb(57, 179, 118);
+    height:150px;
+    background-color: rgba(206, 81, 64, 0.9);
+    filter: blur(2px);
+  }
+  .div4{
+    border:2px solid rgb(201, 27, 79);
+    height:150px;
+  }
+  .bg-image {
+    /* The image used */
+    background-image: url("../../images/sports5.jpg");
+    
+    /* Add the blur effect */
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    
+    /* Full height */
+    height: 100%; 
+    
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
 
@@ -30,7 +73,7 @@
 .div1{
 
 height:450px;
-filter: blur(4px);
+filter: blur(2px);
 }
 /* .div1 img {
   background-size: cover;
@@ -41,7 +84,7 @@ filter: blur(4px);
 .div2{
   
   height:450px;  
-  filter: blur(4px);
+  filter: blur(2px);
 }
 .div2 img{
   background-size: cover;
@@ -52,7 +95,7 @@ filter: blur(4px);
   border:2px solid rgb(57, 179, 118);
   height:250px;
   background-color: rgba(206, 81, 64, 0.9);
-  filter: blur(4px);
+  filter: blur(2px);
 }
 .div4{
   border:2px solid rgb(201, 27, 79);
@@ -64,8 +107,8 @@ filter: blur(4px);
   background-image: url("../../images/sports5.jpg");
   
   /* Add the blur effect */
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
   
   /* Full height */
   height: 100%; 

@@ -18,9 +18,28 @@
 }
 
 .banner>p {
-    font: 600 1.9vmax "Lucida Sans";
+    font: 600 2.9vmax "Lucida Sans";
+    top:100px;
+    margin-top: 200px;
+    color: black;
+
 }
 
+.teachercredit{
+    position: absolute;
+    /* font: 500 2.0vmax "Lucida Sans"; */
+    font-weight: 500;
+    top:30px;
+    right:100px;
+    animation: blinker 1s linear infinite;
+    color:black;
+}
+
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
 .banner>a>button {
     margin-bottom: 5vmax;
     cursor: pointer;
@@ -90,7 +109,7 @@ div>div>div>p>button {
     flex-direction: row;
     text-decoration: none;
     color: rgb(48, 48, 48);
-    margin: 2vmax;
+    /* margin: 2vmax; */
     transition: all 0.5s;
     /* padding-bottom: 0.5vmax; */
 }

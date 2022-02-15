@@ -59,7 +59,7 @@ const Donate = () => {
     >
      
         <div className="bg-image"></div>
-        <div className="bg-text">
+        {/* <div className="bg-text">
           <h2>Item Requested</h2>
           <br />
           <div className="info">
@@ -73,7 +73,7 @@ const Donate = () => {
           </div>
           <br />
           <button type="submit" onClick={donatepay}>❤️ Donate</button>
-        </div> 
+        </div>  */}
       <div className="div2">
         <img src={blog3}></img>
       </div>

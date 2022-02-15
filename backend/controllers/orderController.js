@@ -78,7 +78,7 @@ exports.emailNewOrder = catchAsyncErrors(async (req, res, next) => {
         <h2>Here is your email!</h2>
         <p>${text}</p>
     
-        <p>All the best, Locker Room Team</p>
+        <p>All the best, School Prism Team</p>
          </div>
     `
 	})

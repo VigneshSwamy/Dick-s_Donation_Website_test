@@ -9,3 +9,23 @@
   height: 56px;
   border-radius: 100%;
 }
+
+div > img {
+  top: 450px;
+  padding-left: 7%;
+  padding-right: 0%;
+  height: 40%;
+  width: 90%;
+  padding-bottom: 0;
+}
+
+@media screen and (max-width: 600px) {
+  div > img {
+    top: 450px;
+    padding-left: 7%;
+    padding-right: 0%;
+    height: 40%;
+    width: 90%;
+    padding-bottom: 0;
+  }
+}
