@@ -107,7 +107,7 @@ const Dashboard = () => {
               Order Status <br />
             </p>
           </div>
-          <img src={"https://i.ibb.co/GWTRnGp/Group-76-1.png"} alt={"Pie"} />
+          <img src={"https://i.ibb.co/3T7xTB4/Group-76-2.png"} alt={"Pie"} />
         </div>
 
         {/* <div className="lineChart">
