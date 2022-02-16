@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect,useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 // import { DataGrid } from '@mui/x-data-grid';
 import "./productList.css";
@@ -143,13 +143,32 @@ const ProductList = ({ history }) => {
       });
     });
 
+    const [showText, setShowText] = useState(false);
+    const Text = () => {
+      return (<div className="stockavail">
+         <img src={"https://i.ibb.co/YXdRhb2/Number-in-stock-01.png"} alt={"Bar"} />
+      </div>)
+    }
+  
+    const onClick = () => setShowText(!showText);
+
   return (
     <Fragment>
       <MetaData title={`ALL Items Available - Admin`} />
 
       <div className="dashboard">
         <SideBar />
-        <img src={"https://i.ibb.co/YXdRhb2/Number-in-stock-01.png"} alt={"Bar"} />
+        <div className="metrics">
+            <p>
+              Product Availability Metrics <br />
+            </p>
+        </div>
+        <hr></hr>
+      <div className="inventory">
+        <button onClick={onClick}>View Availability</button>
+        {showText ? <Text /> : null}        
+      </div>
+       
         <div className="productListContainer">
           <h1 id="productListHeading">ALL ITEMS </h1>
          
