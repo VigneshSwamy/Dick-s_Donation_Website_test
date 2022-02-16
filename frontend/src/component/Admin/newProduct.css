@@ -114,7 +114,7 @@
 
 @media screen and (max-width: 600px) {
   div > img {
-    padding-top: 50px;
+    /* padding-top: 50px; */
     padding-left: 7%;
     padding-right: 0%;
     height: 40%;
