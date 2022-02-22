@@ -74,7 +74,8 @@ const Home = ({ history }) => {
           <MetaData title="Donate & help" />
 
           <div className="banner">
-            <p>Welcome to School Prism </p>
+            {/* <p>Welcome to School Prism </p> */}
+            <p>Welcome to<br></br>Bridge To Students </p>
             {/* <h1>SPORTS MAKE PEOPLE BETTER</h1> */}
             <div className="teachercredit">
             <p>Credits<br></br>Left: <span>7</span></p>
